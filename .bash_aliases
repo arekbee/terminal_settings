@@ -5,7 +5,7 @@ mkcd () {
     cd "$1"
 }
 
-
+alias g=git 
 alias d=docker
 alias d_pune='docker system prune --all -volumes'
 alias k=kubectl
