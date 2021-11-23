@@ -1,3 +1,6 @@
 set-alias g git
 set-alias d docker
-set-alias t terraform
+set-alias tf terraform
+
+
+Function  pick-lang {random -InputObject 'cs', 'sc', 'py', 'js'}
