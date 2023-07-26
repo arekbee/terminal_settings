@@ -17,7 +17,7 @@ alias treed='tree -CAFd'
 # ls
 alias l='ls -CF'
 alias ll='ls -alHF'
-alias la='ls -A'
+alias la='ls -lA'
 alias ..='cd ..'  
 alias ....='cd ../..'
 alias rmd='/bin/rm  --recursive --force --verbose '
@@ -39,12 +39,12 @@ alias d_pune='docker system prune --all -volumes'
 
 # k8s
 alias k=kubectl
-alias k_n="kubectl config set-context --current --namespace"
 alias k_a="kubectl apply -f"
-alias k_d="kubectl destroy -f"
+alias k_d="kubectl describe"
 
 alias k_all="kubectl get all -A --show-labels"
 alias k_tail="tail "
+alias k_context="kubectl config set-context --current --namespace"
 
 
 export K_DRY="--dry-run=client -o yaml"
@@ -61,6 +61,9 @@ kns ()
 
 alias kctx="kubectx"
 
+# helm
+alias h=helm
+alias h_l="helm list --all-namespaces --date"
 
 # minikube
 
@@ -76,7 +79,7 @@ alias tf=terraform
 alias tf_graph='terraform graph | dot -o tf_graph.png -Tpng'
 alias tf_docs='terraform-docs markdown . >> _README.md'
 alias tg=terragrunt
-export TF_LOG_PATH=./log_$(date +"%Y%m%d_%H%M%S").txt
+export TF_LOG_PATH=./log_$(date +"%Y%m%d_%H%M%S").log
 
 # systemctl 
 alias sc='systemctl'
@@ -102,3 +105,22 @@ alias openports2='nmap localhost'
 alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | sort | uniq -c | sort -n | sed -e 's/^ *//' -e 's/ *\$//'"
 
 
+# dotnet 
+function _dotnet_bash_complete()
+{
+  local cur="${COMP_WORDS[COMP_CWORD]}" IFS=$'\n' # On Windows you may need to use use IFS=$'\r\n'
+  local candidates
+
+  read -d '' -ra candidates < <(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)
+
+  read -d '' -ra COMPREPLY < <(compgen -W "${candidates[*]:-}" -- "$cur")
+}
+
+complete -f -F _dotnet_bash_complete dotnet
+
+
+
+
+# editor 
+alias v=vi
+alias tab2space="expand -t 2 "
