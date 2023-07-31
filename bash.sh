@@ -15,6 +15,7 @@ alias treed='tree -CAFd'
 
 
 # ls
+alias dir="ls"
 alias l='ls -CF'
 alias ll='ls -alHF'
 alias la='ls -lA'
