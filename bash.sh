@@ -13,6 +13,13 @@ alias folders='du -h --max-depth=1'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 
+apt_uh_i_h () {
+	sudo apt-mark unhold "$@"
+    	sudo apt-get update
+	sudo apt-get install -y "$@"
+	sudo apt-mark hold "$@"
+}
+
 
 # ls
 alias dir="ls"
