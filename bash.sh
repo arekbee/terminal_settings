@@ -49,7 +49,7 @@ alias k_d="kubectl describe"
 alias k_all="kubectl get all -A --show-labels"
 alias k_tail="tail "
 alias k_context="kubectl config set-context --current --namespace"
-
+alias k_drain="kubectl drain --ignore-deamonsets"
 
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
