@@ -37,6 +37,9 @@ alias p_server="python3 -m http.server"
 alias d=docker
 alias d_pune='docker system prune --all -volumes'
 
+# crictl
+alias cri="sudo crictl --runtime-endpoint unxi:///run/containerd/containerd.sock"
+
 
 # k8s
 alias k=kubectl
