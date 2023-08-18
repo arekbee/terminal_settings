@@ -52,11 +52,13 @@ alias cri="sudo crictl --runtime-endpoint unxi:///run/containerd/containerd.sock
 alias k=kubectl
 alias k_a="kubectl apply -f"
 alias k_d="kubectl describe"
+alias k_e="kubectl get events --sort-by='.metadata.creationTimestamp' --field-selector type=Warning,reason=Failed"
 
 alias k_all="kubectl get all -A --show-labels"
-alias k_tail="tail "
+alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kube-scheduler.log /var/log/kube-controller-manager.log"
 alias k_context="kubectl config set-context --current --namespace"
 alias k_drain="kubectl drain --ignore-deamonsets"
+alias k_ls="ls /var/log/containers /var/log/kube-proxy"
 
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
@@ -100,7 +102,7 @@ fi
 
 
 # journalctl
-alias jc='journalctl'
+alias jc='journalctl --no-pager'
 if [[ -r /usr/share/bash-completion/completions/journalctl ]]; then
     . /usr/share/bash-completion/completions/journalctl && complete -F _journalctl journalctl jc
 fi
