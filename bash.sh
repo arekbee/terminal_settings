@@ -105,7 +105,7 @@ fi
 sc_e_s() {
 	sudo systemctl enable "$@"
 	sudo systemctl start "$@"
-	sudo systemctl status "$@"
+	sudo systemctl status "$@" --no-pager
 }
 
 # journalctl
