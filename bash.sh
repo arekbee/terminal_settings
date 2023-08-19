@@ -59,6 +59,8 @@ alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kub
 alias k_context="kubectl config set-context --current --namespace"
 alias k_drain="kubectl drain --ignore-deamonsets"
 alias k_ls="ls /var/log/containers /var/log/kube-proxy"
+alias k_top="kubectl top pods --containers --sort-by=memory"
+
 
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
@@ -100,6 +102,11 @@ if [[ -r /usr/share/bash-completion/completions/systemctl ]]; then
     . /usr/share/bash-completion/completions/systemctl && complete -F _systemctl systemctl sc
 fi
 
+sc_e_s() {
+	sudo systemctl enable "$@"
+	sudo systemctl start "$@"
+	sudo systemctl status "$@"
+}
 
 # journalctl
 alias jc='journalctl --no-pager'
