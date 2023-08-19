@@ -58,7 +58,7 @@ alias k_all="kubectl get all -A --show-labels"
 alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kube-scheduler.log /var/log/kube-controller-manager.log"
 alias k_context="kubectl config set-context --current --namespace"
 alias k_drain="kubectl drain --ignore-deamonsets"
-alias k_ls="ls /var/log/containers /var/log/kube-proxy"
+alias k_ls="ls /var/log/containers /var/log/kube-proxy /var/lib/kubelet"
 alias k_top="kubectl top pods --containers --sort-by=memory"
 
 
