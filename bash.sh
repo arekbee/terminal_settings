@@ -61,7 +61,7 @@ alias k_drain="kubectl drain --ignore-deamonsets"
 alias k_ls="ls /var/log/containers /var/log/kube-proxy /var/lib/kubelet"
 alias k_top="kubectl top pods --containers --sort-by=memory"
 alias k_comp="kubectl get componentstatuses"
-
+alias k_cert="kubectl config view --raw -o jsonpath='{ .users[*].user.client-certificate-data }' | base64 --decode"
 
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
