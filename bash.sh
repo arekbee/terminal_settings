@@ -60,6 +60,7 @@ alias k_context="kubectl config set-context --current --namespace"
 alias k_drain="kubectl drain --ignore-deamonsets"
 alias k_ls="ls /var/log/containers /var/log/kube-proxy /var/lib/kubelet"
 alias k_top="kubectl top pods --containers --sort-by=memory"
+alias k_comp="kubectl get componentstatuses"
 
 
 export K_DRY="--dry-run=client -o yaml"
