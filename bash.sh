@@ -13,8 +13,16 @@ alias folders='du -h --max-depth=1'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 
+apt_uh_i_h () {
+	sudo apt-mark unhold "$@"
+    	sudo apt-get update
+	sudo apt-get install -y "$@"
+	sudo apt-mark hold "$@"
+}
+
 
 # ls
+alias dir="ls"
 alias l='ls -CF'
 alias ll='ls -alHF'
 alias la='ls -lA'
@@ -36,19 +44,28 @@ alias p_server="python3 -m http.server"
 alias d=docker
 alias d_pune='docker system prune --all -volumes'
 
+# crictl
+alias cri="sudo crictl --runtime-endpoint unxi:///run/containerd/containerd.sock"
+
 
 # k8s
 alias k=kubectl
 alias k_a="kubectl apply -f"
 alias k_d="kubectl describe"
-
-alias k_all="kubectl get all -A --show-labels"
-alias k_tail="tail "
-alias k_context="kubectl config set-context --current --namespace"
-
+alias k_e="kubectl exec -it"
 alias k_l="kubectl logs"
 alias k_l_dns="kubectl logs --namespace kube-system --selector 'k8s-app=kube-dns'"
-alias k_e="kubectl exec -it"
+
+alias k_all="kubectl get all -A --show-labels"
+alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kube-scheduler.log /var/log/kube-controller-manager.log"
+alias k_context="kubectl config set-context --current --namespace"
+
+alias k_drain="kubectl drain --ignore-deamonsets"
+alias k_ls="ls /var/log/containers/ /var/log/kube-proxy/ /var/lib/kubelet/ /var/run/secrets/kubernetes.io/serviceaccount/ /etc/kubernetes/pki/"
+alias k_top="kubectl top pods --containers --sort-by=memory"
+alias k_comp="kubectl get componentstatuses"
+alias k_cert="kubectl config view --raw -o jsonpath='{ .users[*].user.client-certificate-data }' | base64 --decode"
+alias k_events="kubectl get events --sort-by='.metadata.creationTimestamp' --field-selector type=Warning,reason=Failed"
 
 
 export K_DRY="--dry-run=client -o yaml"
@@ -91,9 +108,14 @@ if [[ -r /usr/share/bash-completion/completions/systemctl ]]; then
     . /usr/share/bash-completion/completions/systemctl && complete -F _systemctl systemctl sc
 fi
 
+sc_e_s() {
+	sudo systemctl enable "$@"
+	sudo systemctl start "$@"
+	sudo systemctl status "$@" --no-pager
+}
 
 # journalctl
-alias jc='journalctl'
+alias jc='journalctl --no-pager'
 if [[ -r /usr/share/bash-completion/completions/journalctl ]]; then
     . /usr/share/bash-completion/completions/journalctl && complete -F _journalctl journalctl jc
 fi
