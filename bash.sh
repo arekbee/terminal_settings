@@ -46,6 +46,10 @@ alias k_all="kubectl get all -A --show-labels"
 alias k_tail="tail "
 alias k_context="kubectl config set-context --current --namespace"
 
+alias k_l="kubectl logs"
+alias k_l_dns="kubectl logs --namespace kube-system --selector 'k8s-app=kube-dns'"
+alias k_e="kubectl exec -it"
+
 
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
