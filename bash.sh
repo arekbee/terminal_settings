@@ -43,7 +43,10 @@ alias p_server="python3 -m http.server"
 
 # docker
 alias d=docker
-alias d_pune='docker system prune --all -volumes'
+alias d_prune='docker system prune --all -volumes'
+alias d_r_jupyter="docker rnu -it -p 8888:8888 -v $(pwd):/home/jovyan/work jupyter/scripy-notebook"
+
+
 
 # crictl
 alias cri="sudo crictl --runtime-endpoint unxi:///run/containerd/containerd.sock"
