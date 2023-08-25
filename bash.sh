@@ -35,6 +35,7 @@ alias c="curl -L -k --retry-connrefused --retry 7 --retry-max-time 10 --verbose"
 
 # git
 alias g=git
+alias pc=pre-commit
 
 #python
 alias p=python3
