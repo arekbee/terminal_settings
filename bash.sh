@@ -8,6 +8,11 @@ mdcd () {
     pwd
 }
 
+
+cp_b() {
+	cp --force --backup=numbered $@ $@
+}
+
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias tree='tree -CAhF --dirsfirst'
@@ -66,7 +71,7 @@ alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kub
 alias k_context="kubectl config set-context --current --namespace"
 
 alias k_drain="kubectl drain --ignore-deamonsets"
-alias k_ls="ls /var/log/containers/ /var/log/kube-proxy/ /var/lib/kubelet/ /var/run/secrets/kubernetes.io/serviceaccount/ /etc/kubernetes/pki/ /etc/kubernetes/manifests/"
+alias k_ls="ls /var/log/containers/ /var/log/pods/ /var/log/kube-proxy/ /var/lib/kubelet/ /var/run/secrets/kubernetes.io/serviceaccount/ /etc/kubernetes/pki/ /etc/kubernetes/manifests/"
 alias k_top="kubectl top pods --containers --sort-by=memory"
 alias k_comp="kubectl get componentstatuses"
 alias k_cert="kubectl config view --raw -o jsonpath='{ .users[*].user.client-certificate-data }' | base64 --decode"
