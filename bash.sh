@@ -1,6 +1,9 @@
 #!/bin/bash
 
 
+# sudo
+alias s=sudo
+
 # files
 mdcd () {
     mkdir -p "$@"
@@ -42,9 +45,13 @@ alias c="curl -L -k --retry-connrefused --retry 7 --retry-max-time 10 --verbose"
 alias g=git
 alias pc=pre-commit
 
-#python
+
+# python and pip
+alias python=python3
 alias p=python3
 alias p_server="python3 -m http.server"
+alias pip_i="pip install"
+alias pip_i_r="pip install -r requirements.txt"
 
 # docker
 alias d=docker
