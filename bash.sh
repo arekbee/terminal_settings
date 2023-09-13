@@ -31,20 +31,25 @@ apt_uh_i_h () {
 
 # ls
 alias dir="ls"
-alias l='ls -CF'
+alias l='ls -CFa'
 alias ll='ls -alHF'
 alias la='ls -lA'
 alias ..='cd ..'  
-alias ....='cd ../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # curl
 alias c="curl -L -k --retry-connrefused --retry 7 --retry-max-time 10 --verbose"
 
 # git
-alias g=git
 alias pc=pre-commit
-
+alias g=git
+alias g_no_pc="PRE_COMMIT_ALLOW_NO_CONFIG=1 git"
 
 # python and pip
 alias python=python3
@@ -55,9 +60,9 @@ alias pip_i_r="pip install -r requirements.txt"
 
 # docker
 alias d=docker
-alias d_r="docker rnu -it"
+alias d_r="docker run -it"
 alias d_prune='docker system prune --all -volumes'
-alias d_r_jupyter="docker rnu -it -p 8888:8888 -v $(pwd):/home/jovyan/work jupyter/scripy-notebook"
+alias d_r_jupyter="docker run -it -p 8888:8888 -v $(pwd):/home/jovyan/work jupyter/scipy-notebook"
 
 
 
