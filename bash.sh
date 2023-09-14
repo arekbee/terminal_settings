@@ -31,9 +31,9 @@ apt_uh_i_h () {
 
 # ls
 alias dir="ls"
-alias l='ls -CFa'
-alias ll='ls -alHF'
-alias la='ls -lA'
+alias l='ls -CFAv'
+alias ll='ls -laHFsShb --author --dereference'
+alias la='ls -lat'
 alias ..='cd ..'  
 alias ...='cd ../..'
 alias ....='cd ../../..'
