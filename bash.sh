@@ -44,7 +44,7 @@ alias .......='cd ../../../../../..'
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # curl
-alias c="curl -L -k --retry-connrefused --retry 7 --retry-max-time 10 --verbose"
+alias c="curl -L -k --retry-connrefused --retry 7 --retry-max-time 10 --verbose --path-as-is"
 
 # git
 alias pc=pre-commit
@@ -92,6 +92,7 @@ alias k_top="kubectl top pods --containers --sort-by=memory --all-namespaces && 
 alias k_comp="kubectl get componentstatuses"
 alias k_cert="kubectl config view --raw -o jsonpath='{ .users[*].user.client-certificate-data }' | base64 --decode"
 alias k_events="kubectl get events --sort-by='.metadata.creationTimestamp' --field-selector type=Warning,reason=Failed"
+alias k_what_can_i='kubectl auth can-i --list'
 
 
 export K_DRY="--dry-run=client -o yaml"
