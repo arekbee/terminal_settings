@@ -75,8 +75,12 @@ alias k=kubectl
 alias k_a="kubectl apply -f"
 alias k_d="kubectl describe"
 alias k_e="kubectl exec -it"
+alias k_g="kubectl get"
+alias k_g_all="watch -n1 kubectl get all"
 alias k_l="kubectl logs"
 alias k_l_dns="kubectl logs --namespace kube-system --selector 'k8s-app=kube-dns'"
+
+alias k_r_busybox="kubectl run -it --rm busybox --image=radial/busyboxplus --restart=Never -- sh"
 
 alias k_all="kubectl get all -A --show-labels"
 alias k_tail="tail /var/log/kubelet.log /var/log/kube-apiserver.log /var/log/kube-scheduler.log /var/log/kube-controller-manager.log"
@@ -84,7 +88,7 @@ alias k_context="kubectl config set-context --current --namespace"
 
 alias k_drain="kubectl drain --ignore-deamonsets"
 alias k_ls="ls /var/log/containers/ /var/log/pods/ /var/log/kube-proxy/ /var/lib/kubelet/ /var/run/secrets/kubernetes.io/serviceaccount/ /etc/kubernetes/pki/ /etc/kubernetes/manifests/"
-alias k_top="kubectl top pods --containers --sort-by=memory"
+alias k_top="kubectl top pods --containers --sort-by=memory --all-namespaces && kubectl top node --sort-by=memory --all-namespaces"
 alias k_comp="kubectl get componentstatuses"
 alias k_cert="kubectl config view --raw -o jsonpath='{ .users[*].user.client-certificate-data }' | base64 --decode"
 alias k_events="kubectl get events --sort-by='.metadata.creationTimestamp' --field-selector type=Warning,reason=Failed"
@@ -93,6 +97,8 @@ alias k_events="kubectl get events --sort-by='.metadata.creationTimestamp' --fie
 export K_DRY="--dry-run=client -o yaml"
 export K_NOW="--force --grace-period 0"
 export K_NSKS='-n kube-system'
+export K_YAML='--dry-run=client -o yaml'
+
 
 source <(kubectl completion bash)
 complete -F __start_kubectl k
