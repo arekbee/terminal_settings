@@ -73,6 +73,8 @@ alias cri="sudo crictl --runtime-endpoint unxi:///run/containerd/containerd.sock
 # k8s
 alias k=kubectl
 alias k_a="kubectl apply -f"
+alias k_c="kubectl config set-context"
+alias k_c_n="kubectl config set-context --current --namespace"
 alias k_d="kubectl describe"
 alias k_e="kubectl exec -it"
 alias k_g="kubectl get"
